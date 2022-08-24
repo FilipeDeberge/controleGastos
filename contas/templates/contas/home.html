@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href ="{% static 'css/style.css' %}">
+    
+    <title>Controle de gastos</title>
+</head>
+<body>
+    <div class="container">
+        <header><h1>Controle de gastos</h1></header>
+        
+
+        <h2 style="text-align: center;">Lista de despesas</h2>
+        {% if despesas %}
+            <table>
+                <tr>
+                    <th>Data</th>
+                    <th>Descrição</th>
+                    <th>Valor</th>
+                    <th>Categoria</th>
+                    <th>Tipo</th>
+                    <th colspan="2">Ações</th>
+                    
+                </tr>
+                {% for despesa in despesas %}
+                    <tr>
+                        <td>{{ despesa.data }}</td>
+                        <td>{{ despesa.descricao }}</td>
+                        <td>{{ despesa.valor }}</td>
+                        <td>{{ despesa.categoria }}</td>
+                        <td>{{ despesa.tipo }}</td>
+                        <td><a href=""><button class="btn_editar"></button></a></td> 
+                        <td><a href=""><button class="btn_deletar"></button></a></td>
+                    </tr>
+                {% endfor %}
+            </table>
+        {% else %}
+            <p>Nenhuma despesa cadastrada.</p>
+        {% endif %}
+        
+        <!-- <h2 style="text-align: center;">Lista de Receitas</h2>
+        {% if receitas %}
+            <table>
+                <tr>
+                    <th>Data</th>
+                    <th>Descrição</th>
+                    <th>Valor</th>
+                    <th>Categoria</th>
+                    <th>Tipo</th>
+                    <th colspan="2">Ações</th> 
+                </tr>
+                {% for receita in receitas %}
+                    <tr>
+                        <td>{{ receita.data }}</td>
+                        <td>{{ receita.descricao }}</td>
+                        <td>{{ receita.valor }}</td>
+                        <td>{{ receita.categoria }}</td>
+                        <td>{{ receita.tipo}}</td>
+                    </tr>
+                {% endfor %}
+            </table>
+        {% else %}
+            <p>Nenhuma receita cadastrada.</p>
+        {% endif %} -->
+
+        <a href="{% url 'url_nova_transacao' %}"><button class="btn_new">Nova Transação</button></a>
+    </div>
+    
+</body>
+</html>
